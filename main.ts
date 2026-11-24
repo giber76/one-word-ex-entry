@@ -5,5 +5,9 @@
 // losing the edge: a grown man who still needs looking after.
 import { mkdirSync, writeFileSync } from "node:fs";
 
+const ENTRY = "manchild";
+// Guard: the entry must be exactly one word with no whitespace or newline.
+if (!/^[^\s]+$/.test(ENTRY)) throw new Error("entry must be a single word");
+
 mkdirSync("/output", { recursive: true });
-writeFileSync("/output/entry.txt", "manchild", "utf8");
+writeFileSync("/output/entry.txt", ENTRY, "utf8");
